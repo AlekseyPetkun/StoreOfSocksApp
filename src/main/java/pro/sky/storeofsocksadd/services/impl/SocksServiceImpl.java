@@ -19,7 +19,7 @@ public class SocksServiceImpl implements SocksService {
 
     private final ValidationService validationService;
 
-    List<Socks> socksList = new ArrayList<>();
+    private final List<Socks> socksList = new ArrayList<>();
 
     public SocksServiceImpl(ValidationService validationService) {
         this.validationService = validationService;
@@ -28,23 +28,23 @@ public class SocksServiceImpl implements SocksService {
     @Override
     public Socks add(Color color, Size size, int cottonPart, int quantity) {
 
-        if (socksList.size() > 0) {
-            int sum;
-            for (int i = 0; i < socksList.size(); i++) {
-                if (color.equals(socksList.get(i).getColor())
-                        && size.equals(socksList.get(i).getSize())
-                        && cottonPart == socksList.get(i).getCottonPart()) {
+            if (socksList.size() > 0) {
+                int sum;
+                for (int i = 0; i < socksList.size(); i++) {
+                    if (color.equals(socksList.get(i).getColor())
+                            && size.equals(socksList.get(i).getSize())
+                            && cottonPart == socksList.get(i).getCottonPart()) {
 
-                    sum = socksList.get(i).getQuantity() + quantity;
+                        sum = socksList.get(i).getQuantity() + quantity;
 
-                    socksList.set(i, new Socks(color, size, cottonPart, sum));
-                    return socksList.get(i);
+                        socksList.set(i, new Socks(color, size, cottonPart, sum));
+                        return socksList.get(i);
+                    }
                 }
             }
-        }
-        Socks newSocks = new Socks(color, size, cottonPart, quantity);
-        save(newSocks);
-        return newSocks;
+            Socks newSocks = new Socks(color, size, cottonPart, quantity);
+            save(newSocks);
+            return newSocks;
     }
 
     @Override
@@ -75,7 +75,7 @@ public class SocksServiceImpl implements SocksService {
                 }
             }
         }
-        throw new QuantityLimitException("Заданное количество пар носков превысило количество пар на складе!");
+        throw new QuantityLimitException("На складе нет носков!");
     }
 
     @Override

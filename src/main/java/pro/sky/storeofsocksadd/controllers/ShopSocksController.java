@@ -44,10 +44,15 @@ public class ShopSocksController {
     )
     public ResponseEntity<Socks> saveNewSocks(@RequestParam(required = false) Color color,
                                               @RequestParam(required = false) Size size,
-                                              @RequestParam(required = false) int cottonPart,
-                                              @RequestParam(required = false) int quantity) {
+                                              @RequestParam(required = false) Integer cottonPart,
+                                              @RequestParam(required = false) Integer quantity) {
 
-        return ResponseEntity.ok(socksService.add(color, size, cottonPart, quantity));
+        try {
+            return ResponseEntity.ok(socksService.add(color, size, cottonPart, quantity));
+        } catch (RuntimeException e) {
+            e.getStackTrace();
+            return ResponseEntity.notFound().build();
+        }
     }
 
 
@@ -72,10 +77,15 @@ public class ShopSocksController {
     )
     public ResponseEntity<Socks> registration(@RequestParam(required = false) Color color,
                                               @RequestParam(required = false) Size size,
-                                              @RequestParam(required = false) int cottonPart,
-                                              @RequestParam(required = false) int quantity) {
+                                              @RequestParam(required = false) Integer cottonPart,
+                                              @RequestParam(required = false) Integer quantity) {
 
-        return ResponseEntity.ok(socksService.editCount(color, size, cottonPart, quantity));
+        try {
+            return ResponseEntity.ok(socksService.editCount(color, size, cottonPart, quantity));
+        } catch (RuntimeException e) {
+            e.getStackTrace();
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @GetMapping
@@ -97,10 +107,15 @@ public class ShopSocksController {
     )
     public ResponseEntity<String> getAllSocks(@RequestParam(required = false) Color color,
                                               @RequestParam(required = false) Size size,
-                                              @RequestParam(required = false) int cottonMin,
-                                              @RequestParam(required = false) int cottonMax) {
+                                              @RequestParam(required = false) Integer cottonMin,
+                                              @RequestParam(required = false) Integer cottonMax) {
 
-        return ResponseEntity.ok(socksService.getAllByParameters(color, size, cottonMin, cottonMax));
+        try {
+            return ResponseEntity.ok(socksService.getAllByParameters(color, size, cottonMin, cottonMax));
+        } catch (RuntimeException e) {
+            e.getStackTrace();
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @DeleteMapping
@@ -123,9 +138,14 @@ public class ShopSocksController {
     )
     public ResponseEntity<Socks> deleteDefectSocks(@RequestParam(required = false) Color color,
                                                    @RequestParam(required = false) Size size,
-                                                   @RequestParam(required = false) int cottonPart,
-                                                   @RequestParam(required = false) int quantity) {
+                                                   @RequestParam(required = false) Integer cottonPart,
+                                                   @RequestParam(required = false) Integer quantity) {
 
-        return ResponseEntity.ok(socksService.editCount(color, size, cottonPart, quantity));
+        try {
+            return ResponseEntity.ok(socksService.editCount(color, size, cottonPart, quantity));
+        } catch (RuntimeException e) {
+            e.getStackTrace();
+            return ResponseEntity.notFound().build();
+        }
     }
 }
