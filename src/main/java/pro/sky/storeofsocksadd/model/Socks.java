@@ -17,7 +17,6 @@ public class Socks {
     private Color color;
     private Size size;
     private int cottonPart;
-
     private int quantity;
 
     @Override
@@ -25,7 +24,7 @@ public class Socks {
         return "Носки: \n" +
                 "цвет - " + color + "\n" +
                 ", размер - " + size + "\n" +
-                ", состав - " + cottonPart + "% хлопка\n"+
+                ", состав - " + cottonPart + "% хлопка\n" +
                 ", количество на складе - " + quantity + " шт.\n";
     }
 }

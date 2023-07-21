@@ -10,6 +10,7 @@ public interface ValidationService {
 
     /**
      * Валидация сущности Socks
+     *
      * @param socks сущность для валидации.
      * @return валидность сущности
      */
