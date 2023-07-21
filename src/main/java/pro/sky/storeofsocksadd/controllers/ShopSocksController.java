@@ -3,6 +3,7 @@ package pro.sky.storeofsocksadd.controllers;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pro.sky.storeofsocksadd.model.Socks;
@@ -10,19 +11,17 @@ import pro.sky.storeofsocksadd.model.enums.Color;
 import pro.sky.storeofsocksadd.model.enums.Size;
 import pro.sky.storeofsocksadd.services.SocksService;
 
-
+/**
+ * Контроллер по работе с партиями носков
+ */
 @RestController
+@AllArgsConstructor
 @RequestMapping("/api/socks")
 @Tag(name = "API по работе с партиями носков",
         description = "CRUD-операции для работы с партиями носков")
 public class ShopSocksController {
 
     private final SocksService socksService;
-
-    public ShopSocksController(SocksService socksService) {
-        this.socksService = socksService;
-    }
-
 
     @PostMapping
     @Operation(
@@ -54,7 +53,6 @@ public class ShopSocksController {
             return ResponseEntity.notFound().build();
         }
     }
-
 
     @PutMapping()
     @Operation(

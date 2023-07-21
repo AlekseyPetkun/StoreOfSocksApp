@@ -14,6 +14,7 @@ public class ApiExceptionHandler {
     public ResponseEntity<String> handlerValidationException(ValidationException e) {
         return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
     }
+
     @ExceptionHandler
     public ResponseEntity<String> handlerQuestionLimitException(QuantityLimitException e) {
         return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
